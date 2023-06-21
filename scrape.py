@@ -50,4 +50,4 @@ json_data = json.dumps(price_arr)
 with open('py_data.json', 'w') as file:
     file.write(json_data)
 
-
+#test commit
