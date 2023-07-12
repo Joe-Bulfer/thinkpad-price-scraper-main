@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import random, requests, json 
 
+#linux commit test, ignore
 
 def get_price_avg(model,search):
 
