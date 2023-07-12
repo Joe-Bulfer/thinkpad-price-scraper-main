@@ -1,23 +1,28 @@
 from scrape import get_price_avg
+import json
 
 thinkpad_data = []
 
 """Instead of using a regex to filter unwanted models, we can simply use ebay's
 built in search operators in the second argument"""
 
-val = get_price_avg("T430","T430 -T430s")
-thinkpad_data.append(val)
+model_and_search = {
+    "X230": "X230  -X230S",
+    "T430":"Thinkpad T430 -T430S",
+    "T440":"Thinkpad T440 -T440S",
+    "T480":"T480 -T480S"
+}
 
-val = get_price_avg("T480S","T480 -T480S")
-thinkpad_data.append(val)
+# def refine_search(arr): # In the future will take an array of strings to include in search, such as unwanted items i.e battery, keyboard, charger.
+#     pass
 
-val = get_price_avg("X230","X230 -X230S")
-thinkpad_data.append(val)
+for k, v in model_and_search.items():
+    val = get_price_avg(k,v)
+    thinkpad_data.append(val)
 
 print(str(thinkpad_data))
 
-# json_data = json.dumps(price_avg)
+json_data = json.dumps(thinkpad_data)
 
-# with open('py_data.json', 'w') as file:
-#     file.write(json_data)
-#    thinkpad_data.append({"model": model,"price_avg": price_avg})
+with open('py_data.json', 'w') as file:
+    file.write(json_data)
