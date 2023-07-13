@@ -1,5 +1,6 @@
 from scrape import get_price_avg
 import json
+from datetime import datetime
 
 thinkpad_data = []
 
@@ -22,7 +23,11 @@ for k, v in model_and_search.items():
 
 print(str(thinkpad_data))
 
-json_data = json.dumps(thinkpad_data)
+current_date = datetime.now()
+json_date = current_date.isoformat()
+print(json_date)
+
+json_data = json.dumps(thinkpad_data,json_date)
 
 with open('py_data.json', 'w') as file:
     file.write(json_data)

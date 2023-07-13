@@ -1,8 +1,6 @@
 from bs4 import BeautifulSoup
 import random, requests, json 
 
-#linux commit test, ignore
-
 def get_price_avg(model,search):
 
     # cycle through list of user agents to bypass anti bot/scraper software on websites

@@ -6,36 +6,74 @@ fetch("./py_data.json")
     let myChart =  document.getElementById('myChart').getContext('2d');
 
     let chart = new Chart(myChart, {
-        type:'bar', 
+        type:'line', 
         data:{
-            labels:[data[0].model, data[1].model, data[2].model, data[3].model],
+            labels:['5','6','7','8','9','10','11'],
             datasets:[{
-                label:'Thinkpads',
+                label:'Thinkpad 1',
                 data:[
-                    data[0].price_avg,
+                    data[3].price_avg,
                     data[1].price_avg,
                     data[2].price_avg,
-                    data[3].price_avg
+                    data[1].price_avg
                 ],
                 backgroundColor: 'red', 
                 borderColor: 'black',
                 borderWidth: 2 
+            }, {
+                label:'Thinkpad 2',
+                data:[
+                    data[2].price_avg,
+                    data[1].price_avg,
+                    data[3].price_avg,
+                    data[1].price_avg
+                ],
+                backgroundColor: 'blue', 
+                borderColor: 'black',
+                borderWidth: 2 
+            }, {
+                label:'Thinkpad 3',
+                data:[
+                    data[2].price_avg,
+                    data[3].price_avg,
+                    data[3].price_avg,
+                    data[1].price_avg
+                ],
+                backgroundColor: 'blue', 
+                borderColor: 'black',
+                borderWidth: 2 
             }]
+
         },
         options:{
-            plugins: {
-                legend: {
-                    display: false, // legend still in progress
-                    labels: {
+            scales: {
+                y: { 
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 50,
+                        max: 400
+                    },
+                    title: {
+                        display: true,
+                        text: 'Price',
+                        color: '#000',
                         font: {
-                            size: 18, 
-                            family: 'Arial'
-                        },
-                        color: 'white'
+                            size: 20
+                        }
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'July',
+                        color: '#000',
+                        font: {
+                            size: 20
+                        }
                     }
                 }
-            },
-        backgroundColor: 'blue' // this does not work for some reason
+
+            }
         }
     });
 });
